@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#000000">
+  <title>発車案内 · Ekiview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="title">
+      <span class="ja">発車案内</span><span class="en">Departures</span>
+      <span id="demo-badge" class="demo" hidden>DEMO</span>
+    </div>
+    <div id="clock" class="clock">--:--<small>:--</small></div>
+    <div class="date">
+      <div id="date">&nbsp;</div>
+      <div id="daytype" class="daytype">&nbsp;</div>
+    </div>
+    <button id="settings-btn" class="gear" aria-label="Impostazioni">⚙</button>
+  </header>
+
+  <main id="board" class="board"></main>
+
+  <footer class="ticker">
+    <span class="ticker-label"><span class="ja">運行情報</span><span class="en">Service</span></span>
+    <div class="ticker-track"><div id="ticker" class="ticker-text"></div></div>
+  </footer>
+
+  <dialog id="settings">
+    <form method="dialog" id="settings-form">
+      <h2>Impostazioni</h2>
+      <p class="hint">
+        Chiavi gratuite su <b>developer.odpt.org</b>. La chiave “pubblica” serve per
+        Toei; quella “Challenge” per JR East, Tokyu e Rinkai (se le loro linee
+        sono disponibili solo lì). Senza chiavi la pagina gira in modalità demo.
+      </p>
+      <label>Chiave API pubblica (api.odpt.org)
+        <input name="publicKey" autocomplete="off" spellcheck="false">
+      </label>
+      <label>Chiave API Challenge (api-challenge.odpt.org)
+        <input name="challengeKey" autocomplete="off" spellcheck="false">
+      </label>
+      <label>Righe per stazione
+        <input name="rows" type="number" min="2" max="12">
+      </label>
+      <fieldset id="walk-fields"><legend>Minuti a piedi da casa</legend></fieldset>
+      <div class="actions">
+        <button value="clear" type="submit" class="secondary">Svuota cache</button>
+        <button value="cancel" type="submit" class="secondary">Annulla</button>
+        <button value="save" type="submit">Salva</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="config.js"></script>
+  <script src="demo.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
